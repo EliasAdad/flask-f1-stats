@@ -1,15 +1,17 @@
+{% extends 'base.html' %}
 <!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Calendario F1🗓️</title>
+    <title>{% block title %}Calendario F1🗓️{% endblock %}</title>
   </head>
   <body>
+    {% block content %}
     <h1>Calendario de Carreras - Temporada Actual</h1>
 
     {% if races %}
-    <table border="1" cellpadding="8">
+    <table>
       <thead>
         <tr>
           <th>Ronda</th>
@@ -23,7 +25,7 @@
         {% for race in races %}
         <tr>
           <td>{{ race.round }}</td>
-          <td>{{ race.raceName }}</td>
+          <td><strong>{{ race.raceName }}</strong></td>
           <td>{{ race.Circuit.circuitName }}</td>
           <td>
             {{ race.Circuit.Location.locality }}, {{
@@ -36,6 +38,6 @@
     </table>
     {% else %}
     <p>No se pudo cargar el calendario.</p>
-    {% endif %}
+    {% endif %} {% endblock %}
   </body>
 </html>

@@ -1,11 +1,13 @@
+{% extends 'base.html' %}
 <!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Estadísticas de F1 🏎️</title>
+    <title>{% block title %}Estadísticas de F1 🏎️{% endblock %}</title>
   </head>
   <body>
+    {%block content%}
     <h1>Ultimas carreras de Fórmula 1 🏁</h1>
 
     {% if races %}
@@ -20,6 +22,6 @@
     </ul>
     {% else %}
     <p>No se pudieron cargar las carreras.</p>
-    {% endif %}
+    {% endif %} {% endblock %}
   </body>
 </html>

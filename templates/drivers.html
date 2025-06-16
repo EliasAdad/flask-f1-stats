@@ -1,27 +1,40 @@
+{% extends "base.html" %}
 <!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pilotos de la Temporada</title>
+    <title>{% block title %}Pilotos de la Temporada{% endblock %}</title>
   </head>
   <body>
+    {% block content %}
     <h1>Pilotos de F1 - Temporada Actual</h1>
 
     {% if drivers %}
-    <ul>
-      {% for driver in drivers %}
-      <li>
-        <strong>{{driver.givenName}} {{driver.familyName}}</strong><br />
-        Nacionalidad: {{driver.nationality}}<br />
-        Fecha de Nacimiento: {{driver.dateOfBirth}}<br />
-        <a href="{{driver.url}}" target="_blank">Perfil en Wikipedia</a>
-      </li>
-      <hr />
-      {% endfor %}
-    </ul>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Nacionalidad</th>
+          <th>Fecha de nacimiento</th>
+          <th>Más info</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for driver in drivers %}
+        <tr>
+          <td>{{driver.givenName}} {{driver.familyName}}</td>
+          <td>{{driver.nationality}}</td>
+          <td>{{driver.dateOfBirth}}</td>
+          <td>
+            <a href="{{driver.url}}" target="_blank">Perfil en Wikipedia</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
     {% else %}
     <p>No se pudieron cargar los pilotos.</p>
-    {% endif %}
+    {% endif %} {% endblock %}
   </body>
 </html>

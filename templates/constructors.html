@@ -1,26 +1,36 @@
+{% extends 'base.html'%}
 <!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Escuderias de la Temporada</title>
+    <title>{% block title %}Escuderías de la Temporada{% endblock %}</title>
   </head>
   <body>
-    <h1>Escuderias de la Temporada Actual</h1>
+    {% block content %}
+    <h1>Escuderías de la Temporada Actual</h1>
 
     {% if constructors %}
-    <ul>
-      {% for team in constructors %}
-      <li>
-        <strong>{{team.name}}</strong><br />
-        Nacionalidad: {{team.nationality}}<br />
-        <a href="{{team.url}}" target="_blank">Más info</a>
-      </li>
-      <hr />
-      {% endfor %}
-    </ul>
+    <table>
+      <thead>
+        <tr>
+          <th>Escudería</th>
+          <th>Nacionalidad</th>
+          <th>Más info</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for team in constructors %}
+        <tr>
+          <td><strong>{{team.name}}</strong></td>
+          <td>{{team.nationality}}</td>
+          <td><a href="{{team.url}}" target="_blank">Wikipedia</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
     {% else %}
-    <p>No se pudieron cargar las escuderías</p>
-    {% endif %}
+    <p>No se pudieron cargar las escuderías.</p>
+    {% endif %} {% endblock %}
   </body>
 </html>
