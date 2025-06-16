@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Estadísticas de F1 🏎️</title>
+  </head>
+  <body>
+    <h1>Ultimas carreras de Fórmula 1 🏁</h1>
+
+    {% if races %}
+    <ul>
+      {% for race in races %}
+      <li>
+        <strong>{{ race['raceName'] }}</strong> - {{
+        race['Circuit']['circuitName'] }} - {{ race['date'] }} ({{ race['round']
+        }}° ronda )
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p>No se pudieron cargar las carreras.</p>
+    {% endif %}
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Escuderias de la Temporada</title>
+  </head>
+  <body>
+    <h1>Escuderias de la Temporada Actual</h1>
+
+    {% if constructors %}
+    <ul>
+      {% for team in constructors %}
+      <li>
+        <strong>{{team.name}}</strong><br />
+        Nacionalidad: {{team.nationality}}<br />
+        <a href="{{team.url}}" target="_blank">Más info</a>
+      </li>
+      <hr />
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p>No se pudieron cargar las escuderías</p>
+    {% endif %}
+  </body>
+</html>

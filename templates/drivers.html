@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pilotos de la Temporada</title>
+  </head>
+  <body>
+    <h1>Pilotos de F1 - Temporada Actual</h1>
+
+    {% if drivers %}
+    <ul>
+      {% for driver in drivers %}
+      <li>
+        <strong>{{driver.givenName}} {{driver.familyName}}</strong><br />
+        Nacionalidad: {{driver.nationality}}<br />
+        Fecha de Nacimiento: {{driver.dateOfBirth}}<br />
+        <a href="{{driver.url}}" target="_blank">Perfil en Wikipedia</a>
+      </li>
+      <hr />
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p>No se pudieron cargar los pilotos.</p>
+    {% endif %}
+  </body>
+</html>
